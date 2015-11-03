@@ -96,6 +96,12 @@ namespace Microsoft.Data.Entity.Utilities
         public Func<T2, T1, T2> JoinFuncUsedInQueries;
         public Func<T1, T2, T1> JoinFuncUsedInQueries2;
 
+        private IAsyncEnumerable<EntityQueryModelVisitor.TransparentIdentifier<IAsyncGrouping<T1, T2>, T2>> Prop1;
+        private IEnumerable<EntityQueryModelVisitor.TransparentIdentifier<IAsyncGrouping<T1, T2>, T2>> Prop3;
+
+        private Func<IAsyncGrouping<T1, T2>, T2, EntityQueryModelVisitor.TransparentIdentifier<IAsyncGrouping<T1, T2>,T2>> Prop5;
+        private Func<IGrouping<T1, T2>, T2, EntityQueryModelVisitor.TransparentIdentifier<IGrouping<T1, T2>, T2>> Prop6;
+
         public void ImplyMethods()
         {
             ((IDatabase)null).CompileQuery<IGrouping<T1, T2>>(null);
@@ -120,6 +126,28 @@ namespace Microsoft.Data.Entity.Utilities
             AsyncLinqOperatorProvider._ThenBy<T2, T1>(null, null, OrderingDirection.Asc);
             AsyncLinqOperatorProvider._TrackGroupedEntities<T1, T2, object>(null, null, null, null);
             AsyncLinqOperatorProvider._TrackGroupedEntities<T2, T1, object>(null, null, null, null);
+        }
+    }
+
+    // duplicated from above to prevent OutOfMemoryException caused by chaining generics
+    internal class InternalImplyCompileQuery<T>
+    {
+        public void ImplyMethod()
+        {
+            ((IDatabase)null).CompileQuery<T>(null);
+            ((IDatabase)null).CompileAsyncQuery<T>(null);
+        }
+    }
+
+    internal partial class ImplyGeneric<T1, T2, T3>
+    {
+        public void ImplyMethods()
+        {
+            LinqOperatorProvider._GroupBy<T1, T2, T3>(null, null, null);
+            AsyncLinqOperatorProvider._GroupBy<T1, T2, T3>(null,null,null);
+
+            LinqOperatorProvider._SelectMany<T1, T2, T3>(null,null,null);
+            AsyncLinqOperatorProvider._SelectMany<T1, T2, T3>(null,null,null);
         }
     }
 

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
   <Library>
-    <!-- TODO optimize this for types that actually need reflection -->
-    <Assembly Name="EntityFramework.Relational" Dynamic="Required All" />
-
     <!-- TODO will be unnecessary after https://github.com/dotnet/corefx/pull/3917 -->
     <Type Name="System.Data.Common.DbDataReader">
       <MethodInstantiation Name="GetFieldValue" Arguments="System.Byte" Dynamic="Required"/>

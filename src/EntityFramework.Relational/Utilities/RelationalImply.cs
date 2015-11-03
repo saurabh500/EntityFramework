@@ -15,12 +15,12 @@ namespace Microsoft.Data.Entity.Utilities
     /// </summary>
     internal partial class RelationalImplyTypes
     {
-        public ImplyGeneric<ValueBuffer> ValueBufferProp;
-        public ImplyGeneric<object> Object;
-        public ImplyGeneric<string> String;
+        public RelationalImplyGeneric<ValueBuffer> ValueBufferProp;
+        public RelationalImplyGeneric<object> Object;
+        public RelationalImplyGeneric<string> String;
     }
 
-    internal partial class ImplyGeneric<T>
+    internal partial class RelationalImplyGeneric<T>
     {
         public void ImplyMethods()
         {
@@ -34,13 +34,13 @@ namespace Microsoft.Data.Entity.Utilities
         }
     }
 
-    internal partial class ImplyGeneric<T1, T2>
+    internal partial class RelationalImplyGeneric<T1, T2>
     {
         public Func<T1, T2> Func1;
         public Func<T2, T1> Func2;
     }
 
-    internal class ImplyGeneric<T1, T2, T3, T4>
+    internal class RelationalImplyGeneric<T1, T2, T3, T4>
     {
         public void ImplyMethods()
         {

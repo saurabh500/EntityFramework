@@ -39,28 +39,28 @@ namespace Microsoft.Data.Entity.Utilities
 <# 
 foreach(var type in systemTypes) {
 #>
-		ImplyGeneric<<#= type #>> <#= NewPropName() #>;
-		ImplyGeneric<<#= type #>?> <#= NewPropName() #>;
+		RelationalImplyGeneric<<#= type #>> <#= NewPropName() #>;
+		RelationalImplyGeneric<<#= type #>?> <#= NewPropName() #>;
 <# 
 }
 #>
 	}
 
-	internal partial class ImplyGeneric<T>
+	internal partial class RelationalImplyGeneric<T>
 	{
 		// system objects
-        ImplyGeneric<object, T> <#= NewPropName() #>;
-        ImplyGeneric<T, object> <#= NewPropName() #>;
-        ImplyGeneric<string, T> <#= NewPropName() #>;
-        ImplyGeneric<T, string> <#= NewPropName() #>;
+        RelationalImplyGeneric<object, T> <#= NewPropName() #>;
+        RelationalImplyGeneric<T, object> <#= NewPropName() #>;
+        RelationalImplyGeneric<string, T> <#= NewPropName() #>;
+        RelationalImplyGeneric<T, string> <#= NewPropName() #>;
 
 <# 
 foreach(var type in systemTypes) {
 #>
-		ImplyGeneric<<#= type #>, T> <#= NewPropName() #>;
-		ImplyGeneric<<#= type #>?, T> <#= NewPropName() #>;
-		ImplyGeneric<T, <#= type #>> <#= NewPropName() #>;
-		ImplyGeneric<T, <#= type #>?> <#= NewPropName() #>;
+		RelationalImplyGeneric<<#= type #>, T> <#= NewPropName() #>;
+		RelationalImplyGeneric<<#= type #>?, T> <#= NewPropName() #>;
+		RelationalImplyGeneric<T, <#= type #>> <#= NewPropName() #>;
+		RelationalImplyGeneric<T, <#= type #>?> <#= NewPropName() #>;
 <# 
 }
 #>

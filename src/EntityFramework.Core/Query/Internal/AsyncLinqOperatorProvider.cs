@@ -304,7 +304,7 @@ namespace Microsoft.Data.Entity.Query.Internal
                 .GetTypeInfo().GetDeclaredMethod(nameof(_SelectMany));
 
         [UsedImplicitly]
-        private static IAsyncEnumerable<TResult> _SelectMany<TSource, TCollection, TResult>(
+        internal static IAsyncEnumerable<TResult> _SelectMany<TSource, TCollection, TResult>(
             IAsyncEnumerable<TSource> source,
             Func<TSource, IAsyncEnumerable<TCollection>> collectionSelector,
             Func<TSource, TCollection, TResult> resultSelector)
@@ -418,7 +418,7 @@ namespace Microsoft.Data.Entity.Query.Internal
             = typeof(AsyncLinqOperatorProvider).GetTypeInfo().GetDeclaredMethod(nameof(_GroupBy));
 
         [UsedImplicitly]
-        private static IAsyncEnumerable<IAsyncGrouping<TKey, TElement>> _GroupBy<TSource, TKey, TElement>(
+        internal static IAsyncEnumerable<IAsyncGrouping<TKey, TElement>> _GroupBy<TSource, TKey, TElement>(
             IAsyncEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector)
             => source.GroupBy(keySelector, elementSelector);
 
