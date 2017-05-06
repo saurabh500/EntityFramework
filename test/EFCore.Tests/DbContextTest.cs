@@ -2282,7 +2282,7 @@ namespace Microsoft.EntityFrameworkCore.Tests
                 .AddMemoryCache()
                 .BuildServiceProvider();
 
-            var loggerFactory = new WrappingLoggerFactory(appServiceProivder.GetService<ILoggerFactory>());
+            var loggerFactory = new WrappingLoggerFactory(appServiceProivder.GetService<LoggerFactory>());
             var memoryCache = appServiceProivder.GetService<IMemoryCache>();
 
             IInMemoryStoreCache singleton;
@@ -2341,7 +2341,7 @@ namespace Microsoft.EntityFrameworkCore.Tests
                 .AddMemoryCache()
                 .BuildServiceProvider();
 
-            var loggerFactory = new WrappingLoggerFactory(appServiceProivder.GetService<ILoggerFactory>());
+            var loggerFactory = new WrappingLoggerFactory(appServiceProivder.GetService<LoggerFactory>());
             var memoryCache = appServiceProivder.GetService<IMemoryCache>();
 
             var options = new DbContextOptionsBuilder<ConstructorTestContextWithOC3A>()
@@ -2475,7 +2475,7 @@ namespace Microsoft.EntityFrameworkCore.Tests
                 .AddMemoryCache()
                 .BuildServiceProvider();
 
-            var loggerFactory = new WrappingLoggerFactory(appServiceProivder.GetService<ILoggerFactory>());
+            var loggerFactory = new WrappingLoggerFactory(appServiceProivder.GetService<LoggerFactory>());
             var memoryCache = appServiceProivder.GetService<IMemoryCache>();
 
             var options = new DbContextOptionsBuilder<ConstructorTestContext1A>()
@@ -2579,7 +2579,7 @@ namespace Microsoft.EntityFrameworkCore.Tests
                 .AddMemoryCache()
                 .BuildServiceProvider();
 
-            var loggerFactory = new WrappingLoggerFactory(appServiceProivder.GetService<ILoggerFactory>());
+            var loggerFactory = new WrappingLoggerFactory(appServiceProivder.GetService<LoggerFactory>());
             var memoryCache = appServiceProivder.GetService<IMemoryCache>();
 
             var options = new DbContextOptionsBuilder()
@@ -3805,7 +3805,7 @@ namespace Microsoft.EntityFrameworkCore.Tests
                 .AddEntityFrameworkInMemoryDatabase()
                 .AddDbContext<DbContext>((p, b) =>
                     b.UseTransientInMemoryDatabase()
-                        .UseLoggerFactory(loggerFactory = new WrappingLoggerFactory(p.GetService<ILoggerFactory>())))
+                        .UseLoggerFactory(loggerFactory = new WrappingLoggerFactory(p.GetService<LoggerFactory>())))
                 .BuildServiceProvider();
 
             Assert.NotNull(appServiceProivder.GetService<IInterceptingLogger<LoggerCategory.Infrastructure>>());
@@ -4689,11 +4689,11 @@ namespace Microsoft.EntityFrameworkCore.Tests
 
         private class WrappingLoggerFactory : ILoggerFactory
         {
-            private readonly ILoggerFactory _loggerFactory;
+            private readonly LoggerFactory _loggerFactory;
 
             public IList<string> CreatedLoggers { get; } = new List<string>();
 
-            public WrappingLoggerFactory(ILoggerFactory loggerFactory)
+            public WrappingLoggerFactory(LoggerFactory loggerFactory)
             {
                 _loggerFactory = loggerFactory;
             }

@@ -61,7 +61,7 @@ namespace Microsoft.EntityFrameworkCore.Design.Internal
 
             var services = _servicesBuilder.Build(provider);
 
-            var loggerFactory = services.GetService<ILoggerFactory>();
+            var loggerFactory = services.GetService<LoggerFactory>();
             loggerFactory.AddProvider(new LoggerProvider(categoryName => new OperationLogger(categoryName, _reporter)));
 
             var generator = services.GetRequiredService<ReverseEngineeringGenerator>();
