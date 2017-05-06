@@ -42,7 +42,7 @@ namespace Microsoft.EntityFrameworkCore.Relational.Design.Specification.Tests.Re
                 .AddSingleton(typeof(IFileService), sp => InMemoryFiles = new InMemoryFileService()).BuildServiceProvider();
 
             _reporter = new InMemoryOperationReporter(_output);
-            serviceProvider.GetService<ILoggerFactory>().AddProvider(new LoggerProvider(categoryName => new OperationLogger(categoryName, _reporter)));
+            serviceProvider.GetService<LoggerFactory>().AddProvider(new LoggerProvider(categoryName => new OperationLogger(categoryName, _reporter)));
 
             Generator = serviceProvider.GetRequiredService<ReverseEngineeringGenerator>();
             ScaffoldingModelFactory = serviceProvider.GetRequiredService<IScaffoldingModelFactory>();

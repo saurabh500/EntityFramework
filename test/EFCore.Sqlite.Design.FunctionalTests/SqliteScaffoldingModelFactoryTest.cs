@@ -39,7 +39,7 @@ namespace Microsoft.EntityFrameworkCore.Sqlite.Design.FunctionalTests
                 .BuildServiceProvider();
 
             _logger = new TestLogger();
-            serviceProvider.GetService<ILoggerFactory>().AddProvider(new TestLoggerProvider(_logger));
+            serviceProvider.GetService<LoggerFactory>().AddProvider(new TestLoggerProvider(_logger));
 
             _scaffoldingModelFactory = serviceProvider
                 .GetService<IScaffoldingModelFactory>() as RelationalScaffoldingModelFactory;
