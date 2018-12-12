@@ -46,7 +46,7 @@ jobs:
       ${{ if eq(variables['System.TeamProject'], 'internal') }}:
         name: sausing
       ${{ if ne(variables['System.TeamProject'], 'internal') }}:
-        name: dotnet-external-temp
+        name: sausing
   variables:
     AgentOsName: ${{ parameters.agentOs }}
     DOTNET_HOME: $(Agent.WorkFolder)/.dotnet
