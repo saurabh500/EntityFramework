@@ -44,7 +44,7 @@ jobs:
       vmImage: ubuntu-16.04
     ${{ if and(eq(parameters.poolName, ''), eq(parameters.agentOs, 'Windows')) }}:
       ${{ if eq(variables['System.TeamProject'], 'internal') }}:
-        name: dotnet-internal-temp
+        name: sausing
       ${{ if ne(variables['System.TeamProject'], 'internal') }}:
         name: dotnet-external-temp
   variables:
